@@ -42,7 +42,7 @@ public class AdminController {
     @Autowired
     DepartementService departementService;
     
-    @GetMapping("/adminHome")
+    @GetMapping("/admin")
     public String adminHome() {
         return "adminHome";
     }

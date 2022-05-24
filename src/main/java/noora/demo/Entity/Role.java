@@ -1,9 +1,11 @@
 package noora.demo.Entity;
 
+import javax.persistence.Entity;
+import javax.validation.constraints.NotEmpty;
+
 import java.util.List;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
@@ -22,5 +24,4 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
-
 }

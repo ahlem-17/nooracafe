@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
        
-     /*   http
+     http
         .authorizeRequests()
         .antMatchers("/", "/shopping/**", "/home/**", "/register", "/password", "/h2-console/**").permitAll()
          .antMatchers("/admin/**").hasRole("ADMIN")
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         .and()
         .csrf()
         .disable();
-    http.headers().frameOptions().disable();*/
+    http.headers().frameOptions().disable();
     }
    
     @Bean
@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**", "/static/**", "/images/**", "/productImages/**", "/css/**", "/js/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/images/**", "/productImages/**", "/css/**", "/js/**",  "/error" );
     }
     
 }

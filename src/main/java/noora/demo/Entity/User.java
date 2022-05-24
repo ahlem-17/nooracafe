@@ -3,18 +3,18 @@ package noora.demo.Entity;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
-
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 @Entity
 @Data
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -22,18 +22,15 @@ public class User {
     @NotEmpty
     @Column(nullable = false)
     private String firstName;
-
     private String lastName;
 
     @Column(nullable = false, unique = true)
     @NotEmpty
     @Email(message = "{errors.invalid_email}")
     private String email;
-
-   
     private String password;
 
-    @ManyToMany (cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany (cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_role",
         joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
@@ -52,5 +49,4 @@ public class User {
     public User() {
 
     }
-
 }
